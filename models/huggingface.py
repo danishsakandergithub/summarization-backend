@@ -1,7 +1,12 @@
 import requests
+import os
+from dotenv import load_dotenv
+load_dotenv()  
+
+HF_TOKEN = os.getenv("HF_API_TOKEN")
 
 HF_API_URL = "https://api-inference.huggingface.co/models/sshleifer/distilbart-cnn-12-6"
-HF_TOKEN = "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"  # 🔑 Replace with your real Hugging Face token
+
 
 def summarize_with_hf(text: str, max_length: int = 500, min_length: int = 50) -> str:
     headers = {"Authorization": f"Bearer {HF_TOKEN}"}
